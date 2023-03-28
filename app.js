@@ -4,7 +4,7 @@ const port = 3000;
 
 
 app.get('/', function(req, res){
-    return res.send('Hello!')
+    return res.send('Liza ty samaya krytaya')
 })
 
 
