@@ -5,13 +5,13 @@ const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Name is required'],
-    maxlength: [64, 'Name cant be greater then 64 characters'],
-    minlength: [2, 'Name cant be smaller then 2 characters']
+    minlength: [2, 'Name can\'t be smaller than 2 characters'],
+    maxlength: [64, 'Name can\'t be greater than 64 characters']
   },
   email: {
     type: String,
     required: [true, 'Email is required'],
-    maxlength: [128, 'Email cant be greater then 128 characters'],
+    maxlength: [128, 'Email can\'t be greater than 128 characters'],
     index: true
   },
   password: {
@@ -32,6 +32,7 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) next()
+
   this.password = await bcrypt.hash(this.password, 10)
   next()
 })

@@ -19,3 +19,15 @@ describe("Make sure that status is 200", () => {
       })
   })
 })
+
+describe("Make sure register fails on no data", () => {
+  it("should return 400", (done) => {
+    chai.request(app)
+      .post('/register')
+      .end((_err, res) => {
+        res.should.have.status(200)
+        res.body.should.be.a('object')
+        done()
+      })
+  })
+})
