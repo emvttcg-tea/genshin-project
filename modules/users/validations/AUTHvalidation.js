@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 const registerSchema = Joi.object({
-  username: Joi.string()
+  name: Joi.string()
     .trim()
     .min(2)
     .max(64)
@@ -9,6 +9,8 @@ const registerSchema = Joi.object({
 
   password: Joi.string()
     .required(),
+
+  repeat_password: Joi.ref('password'),
 
   email: Joi.string()
     .trim()

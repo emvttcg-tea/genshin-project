@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const joiErrorFormatter = (rawErrors) => {
   const errors = {}
   const details = rawErrors.details
@@ -7,6 +8,13 @@ const joiErrorFormatter = (rawErrors) => {
   return errors
 }
 
-const mongooseErrorFormatter = () //9:49 day 11
+const mongooseErrorFormatter = (rawErrors) => {
+  const errors = {}
+  const details = rawErrors.errors
+  for (const key in details) {
+    errors[key] = [details[key].message]
+  }
+  return errors
+}
 
-module.exports = joiErrorFormatter
+module.exports = { joiErrorFormatter, mongooseErrorFormatter }
