@@ -1,7 +1,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable padded-blocks */
 const express = require('express')
-const session = require('express-session')
+const exsession = require('express-session')
 const port = 3000
 const bodyParser = require('body-parser')
 require('./utils/db.config')
@@ -15,17 +15,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set('view engine', 'ejs')
 
-app.use('/', authRoutes)
-app.use(passport.session())
-app.use(passport.initialize())
-
 // sessions
-app.use(session({
+app.use(exsession({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
 }))
+
+app.use('/', authRoutes)
+app.use(passport.session())
+app.use(passport.initialize())
 
 // home page render
 app.get('/', (req, res) => {

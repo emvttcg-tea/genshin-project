@@ -1,33 +1,36 @@
-/* eslint-disable spaced-comment */
 /* eslint-disable no-unused-vars */
 const express = require('express')
 const router = express.Router()
 const { addUser } = require('../modules/users/service/userService')
-const { registerSchema } = require('../modules/users/validations/AUTHvalidation.js')
+const { registerSchema } = require('../modules/users/validations/authValidation')
 const { joiErrorFormatter, mongooseErrorFormatter } = require('../utils/validationFormatter')
 const passport = require('passport')
 
-// renders registration page
+/**
+ * Shows page for user registration
+ */
 router.get('/register', (req, res) => {
   return res.render('register', { message: {}, formData: {}, errors: {} })
 })
 
-// handles user registration
+/**
+ * Handles user registration
+ */
 router.post('/register', async (req, res) => {
   try {
     const validationResult = registerSchema.validate(req.body, {
       abortEarly: false
     })
-    // if (validationResult.error) {
-    //   return res.render('register', {
-    //     message: {
-    //       type: 'error',
-    //       body: 'Validation Errors'
-    //     },
-    //     errors: joiErrorFormatter(validationResult.error),
-    //     formData: req.body
-    //   })
-    // }
+    if (validationResult.error) {
+      return res.render('register', {
+        message: {
+          type: 'error',
+          body: 'Validation Errors'
+        },
+        errors: joiErrorFormatter(validationResult.error),
+        formData: req.body
+      })
+    }
     const user = await addUser(req.body)
     return res.render('register', {
       message: {
@@ -50,17 +53,26 @@ router.post('/register', async (req, res) => {
   }
 })
 
-//login page here
+/**
+ * Shows page for user login
+ */
 router.get('/login', (req, res) => {
   return res.render('login', { message: {}, formData: {}, errors: {} })
 })
 
-//logs in an user
-router.post('/login', passport.authenticate('local', { successRedirect: '/login-success', failureRedirect: '/login-failed' }), (req, res) => {
+/**
+ * Logs in a user
+ */
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/login-sucess',
+  failureRedirect: '/login-failed'
+}), (req, res) => {
+  console.log(req.user)
+
   return res.render('login', {
     message: {
       type: 'success',
-      body: 'Login success!'
+      body: 'Login success'
     },
     formData: {},
     errors: {}
