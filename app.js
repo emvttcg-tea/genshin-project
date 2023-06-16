@@ -8,6 +8,7 @@ require('./utils/db.config')
 const passport = require('passport')
 require('./utils/authStrategies/localStrategy')
 const authRoutes = require('./routes/authRoutes')
+const authMiddleware = require('./middleware/authMiddleware')
 
 const app = express()
 
@@ -23,9 +24,9 @@ app.use(exsession({
   cookie: { secure: false }
 }))
 
-app.use('/', authRoutes)
 app.use(passport.session())
 app.use(passport.initialize())
+app.use('/', authRoutes)
 
 // home page render
 app.get('/', (req, res) => {
@@ -35,6 +36,10 @@ app.get('/', (req, res) => {
   console.log(req.user)
 
   return res.render('index')
+})
+
+app.get('/homepage', authMiddleware, (req, res) => {
+  res.send(`welcome ${req.user.name}`)
 })
 
 app.listen(port, () => {

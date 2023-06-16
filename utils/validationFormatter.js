@@ -2,6 +2,7 @@
 const joiErrorFormatter = (rawErrors) => {
   const errors = {}
   const details = rawErrors.details
+  // eslint-disable-next-line array-callback-return
   details.map(d => {
     errors[d.path] = [d.message]
   })
