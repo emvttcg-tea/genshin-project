@@ -6,12 +6,13 @@ const { registerSchema } = require('../modules/users/validations/authValidation'
 const { joiErrorFormatter, mongooseErrorFormatter } = require('../utils/validationFormatter')
 const passport = require('passport')
 const guestMiddleware = require('../middleware/guestMiddleware')
+const authMiddleware = require('../middleware/authMiddleware')
 
 /**
  * Shows page for user registration
  */
 router.get('/register', guestMiddleware, (req, res) => {
-  return res.render('register', { message: {}, formData: {}, errors: {} })
+  return res.render('register')
 })
 
 /**
@@ -58,7 +59,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
  * Shows page for user login
  */
 router.get('/login', guestMiddleware, (req, res) => {
-  return res.render('login', { message: {}, formData: {}, errors: {} })
+  return res.render('login')
 })
 
 /**
@@ -77,6 +78,14 @@ router.post('/login', guestMiddleware, passport.authenticate('local', {
     },
     formData: {},
     errors: {}
+  })
+})
+
+// log out
+router.get('/logout', authMiddleware, (req, res, next) => {
+  req.logout(function (err) {
+    if (err) { return next(err) }
+    res.redirect('/')
   })
 })
 

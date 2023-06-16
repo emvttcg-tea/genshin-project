@@ -27,6 +27,9 @@ app.use(exsession({
 app.use(passport.session())
 app.use(passport.initialize())
 app.use('/', authRoutes)
+app.locals.message = {}
+app.locals.formData = {}
+app.locals.errors = {}
 
 // home page render
 app.get('/', (req, res) => {

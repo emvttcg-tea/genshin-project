@@ -13,7 +13,7 @@ async (email, password, done) => {
       done(null, false)
     }
 
-    if (user.checkPassword(password)) {
+    if (await user.checkPassword(password)) {
       return done(null, user)
     }
 
