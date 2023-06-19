@@ -1,5 +1,6 @@
+const config = require('./config')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1:27017/genshin-master', {
+mongoose.connect(config.mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
