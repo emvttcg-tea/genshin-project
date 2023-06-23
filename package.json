@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha tests/*.js --exit",
-    "serve:local": "nodemon app.js -e js,ejs",
+    "serve:local": "nodemon app.js -e js,ejs,css",
     "lint:fix": "eslint --fix ./*.js"
   },
   "repository": {
