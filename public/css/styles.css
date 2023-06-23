@@ -1,3 +1,15 @@
+/* root */
+body {
+  background-color: #F0EBE5;
+}
+
+/* class id */
 .navbar-custom {
   background-color: #495263;
+}
+
+/* dark theme */
+.dark-main {
+  background-color: #3A414F;
+  color: #fff;
 }

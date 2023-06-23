@@ -1,0 +1,3 @@
+npm i -S bcrypt, body-parser, dotenv, ejs, express, express-session, joi mongoose, morgan, node-gyp, passport, passport-local
+
+npm i -D chai, chai-http, eslint, mocha, nodemon
