@@ -6,6 +6,11 @@ body {
 /* class id */
 .navbar-custom {
   background-color: #495263;
+  height: 4em;
+}
+
+.nav-logo {
+  width: 2em;
 }
 
 /* dark theme */

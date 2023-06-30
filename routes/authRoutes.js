@@ -24,6 +24,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
       abortEarly: false
     })
     if (validationResult.error) {
+      console.log(validationResult.error)
       req.session.flashData = {
         message: {
           type: 'error',
@@ -43,6 +44,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
     }
     return res.redirect('/register')
   } catch (e) {
+    console.log(e)
     req.session.flashData = {
       message: {
         type: 'error',
@@ -106,7 +108,11 @@ router.post('/login', guestMiddleware, (req, res, next) => {
  * Logs out a user
  */
 router.get('/logout', authMiddleware, (req, res) => {
-  req.logout()
+  req.logout((err) => {
+    if (err) {
+      return next(err)
+    }
+  })
   req.session.flashData = {
     message: {
       type: 'success',

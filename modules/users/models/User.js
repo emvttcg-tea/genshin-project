@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const userSchema = mongoose.Schema({
-  name: {
+  username: {
     type: String,
-    required: [true, 'Name is required'],
-    minlength: [2, 'Name can\'t be smaller than 2 characters'],
-    maxlength: [64, 'Name can\'t be greater than 64 characters']
+    required: [true, 'Userame is required'],
+    minlength: [2, 'Username can\'t be smaller than 2 characters'],
+    maxlength: [64, 'Username can\'t be greater than 64 characters']
   },
   email: {
     type: String,
@@ -17,6 +17,9 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required']
+  },
+  userID: {
+    // get new id and check if it is the same that exists already, or somehow add +1 each new user and start from user 000001
   },
   isActive: {
     type: Boolean,
@@ -35,6 +38,12 @@ userSchema.path('email').validate(async (email) => {
   const emailCount = await mongoose.models.users.countDocuments({ email })
   return !emailCount
 }, 'Account with the same email adress already exists')
+
+// validates unique username
+userSchema.path('username').validate(async (username) => {
+  const usernameCount = await mongoose.models.users.countDocuments({ username })
+  return !usernameCount
+}, 'Account with the same username already exists')
 
 // encrypt password
 userSchema.pre('save', async function (next) {

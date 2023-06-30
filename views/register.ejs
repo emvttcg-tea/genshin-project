@@ -18,19 +18,19 @@
     <form method="POST" action="/register">
 
       <div class="mb-3">
-        <label for="name" class="form-label">Name<sup class="text-danger">*</sup></label>
+        <label for="username" class="form-label">Username:<sup class="text-danger">*</sup></label>
         <input 
         type="text" 
-        class="form-control <%= errors.name ? 'is-invalid' : '' %>" 
-        id="name" 
-        name="name"
-        value="<%= formData.name %>"
+        class="form-control <%= errors.username ? 'is-invalid' : '' %>" 
+        id="username" 
+        name="username"
+        value="<%= formData.username %>"
         maxlength="64"
         minlehgth="2"
         >
-        <% if (errors.name) { %>
+        <% if (errors.username) { %>
           <div class="invalid-feedback">
-            <%= errors.name[0] %>
+            <%= errors.username[0] %>
           </div>
         <% } %>
       </div>

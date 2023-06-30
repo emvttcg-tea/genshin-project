@@ -42,7 +42,7 @@ app.get('/', flasherMiddleware, (req, res) => {
 })
 
 app.get('/homepage', authMiddleware, (req, res) => {
-  res.send(`welcome ${req.user.name}`)
+  res.send(`welcome ${req.user.username}`)
 })
 
 app.use((req, res) => {
