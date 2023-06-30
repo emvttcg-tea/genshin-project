@@ -8,7 +8,7 @@ const User = require('../models/User')
 const addUser = async (userInput) => {
   const user = new User(userInput)
   await user.save()
-  console.log(userInput);
+  // console.log(userInput)
   return user
 }
 

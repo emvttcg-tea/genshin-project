@@ -3,6 +3,11 @@ body {
   background-color: #F0EBE5;
 }
 
+/* remove */
+.btn-group {
+  margin-top: 5%;
+}
+
 /* class id */
 .navbar-custom {
   background-color: #495263;
