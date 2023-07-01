@@ -6,4 +6,6 @@ const googleUserSchema = new Schema({
   googleId: String
 })
 
-const UserGoogle = mongoose.model('users', )  //11 6 36
+const UserGoogle = mongoose.model('users', googleUserSchema)
+
+module.exports = UserGoogle
