@@ -1,11 +1,19 @@
-const config = require('./config')
 const passport = require('passport')
-const googleStrategy = require('passport-google-oauth20')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+const User = require('../modules/users/models/googleUser')
+const config = require('./config')
 
-passport.use(new googleStrategy({
-  callbackURL: '/google/redirect',
+passport.use(new GoogleStrategy({
   clientID: config.googleClientID,
-  clientSecret: config.googleClientSecret
+  clientSecret: config.googleClientSecret,
+  callbackURL: '/google/redirect'
 },(accessToken, refreshToken, profile, done) => {
-  console.log(profile);
+
+  new User({
+    username: profile.displayName,
+    googleID: profile.id
+  }).save().then((newUser) => {
+    console.log(newUser)
+  })
+  
 }))

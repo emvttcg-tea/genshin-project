@@ -6,7 +6,7 @@ const config = require('../config')
 passport.use(new GoogleStrategy({
   clientID: config.googleClientID,
   clientSecret: config.googleClientSecret,
-  callbackURL: '/google/callback'
+  callbackURL: '/google/redirect'
 },(accessToken, refreshToken, profile, done) => {
   // console.log(profile)
 
@@ -14,7 +14,7 @@ passport.use(new GoogleStrategy({
     username: profile.displayName,
     id: profile.id
   }).save().then((newUser) => {
-    console.log(newUser)
+    // console.log(newUser)
   })
   
 }))

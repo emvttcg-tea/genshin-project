@@ -3,9 +3,9 @@ const Schema = mongoose.Schema
 
 const googleUserSchema = new Schema({
   username: String,
-  googleId: String
+  googleID: String
 })
 
-const UserGoogle = mongoose.model('users', googleUserSchema)
+const UserGoogle = mongoose.model('google-users', googleUserSchema)
 
 module.exports = UserGoogle

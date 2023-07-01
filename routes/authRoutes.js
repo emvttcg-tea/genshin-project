@@ -123,9 +123,9 @@ router.get('/logout', authMiddleware, (req, res) => {
 })
 
 // google login
-router.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile']
-}))
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile']}), (req, res) => {
+  console.log(req.user)
+})
 
 // google callback
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
