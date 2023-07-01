@@ -1,12 +1,23 @@
+// config
 require('dotenv').config()
 const config = require('./utils/config')
+require('./utils/db.config')
+
+//express
 const express = require('express')
 const exsession = require('express-session')
+
+// all others
 const logger = require('morgan')
 const bodyParser = require('body-parser')
-require('./utils/db.config')
 const passport = require('passport')
+
+// strategies
 require('./utils/authStrategies/localStrategy')
+const passportSetup = require('./utils/passportCon')
+
+
+// middlewares
 const authRoutes = require('./routes/authRoutes')
 const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
@@ -41,10 +52,12 @@ app.get('/', flasherMiddleware, (req, res) => {
   return res.render('index')
 })
 
+// homepage
 app.get('/homepage', authMiddleware, (req, res) => {
   res.send(`welcome ${req.user.username}`)
 })
 
+// 404
 app.use((req, res) => {
   return res.status(404).render('404')
 })

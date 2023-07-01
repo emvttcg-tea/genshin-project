@@ -1,7 +1,3 @@
 npm i -S bcrypt, body-parser, dotenv, ejs, express, express-session, joi mongoose, morgan, node-gyp, passport, passport-local, bootstrap-icons, passport-google-oauth20
 
 npm i -D chai, chai-http, eslint, mocha, nodemon
-
-google:
-clientID 230188085956-kktr2161inooai1sboe1apleua7mat0n.apps.googleusercontent.com
-client secret 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

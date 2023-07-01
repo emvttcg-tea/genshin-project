@@ -122,4 +122,14 @@ router.get('/logout', authMiddleware, (req, res) => {
   return res.redirect('/')
 })
 
+// google login
+router.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile']
+}))
+
+// google callback
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+  res.send('you reached tha callback')
+})
+
 module.exports = router

@@ -16,12 +16,12 @@ passport.use(new LocalStrategy({
 }))
 
 passport.serializeUser((user, done) => {
-  return done(null, user._id)
+  return done(null, user.id)
 })
 
-passport.deserializeUser(async (_id, done) => {
+passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findOne({ _id })
+    const user = await User.findOne({ id })
     return done(null, user)
   } catch (e) {
     return done(e)
