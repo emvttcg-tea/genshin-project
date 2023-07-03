@@ -122,14 +122,25 @@ router.get('/logout', authMiddleware, (req, res) => {
   return res.redirect('/')
 })
 
-// google login
-router.get('/auth/google', passport.authenticate('google', {scope: ['profile']}), (req, res) => {
-  console.log(req.user)
-})
+// // google login
+// router.get('/auth/google', passport.authenticate('google', {scope: ['profile']}))
 
-// google callback
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.send('you reached tha callback')
-})
+// // google callback
+// router.get('/google/redirect', /**authMiddleware,guestMiddleware,**/ passport.authenticate('google'), (req, res, user) => {
+//   console.log('user is:', req.user)
+//   // req.login(user, (err) => {
+//   //   if (err) { return next(err); }
+//   //   console.log('wtf?')
+//   //   return res.send('welcome' + req.user.username);
+//   // });
+//   // res.send(req.user.username)
+//   res.redirect('/homepage')
+// })
+
+// profile/homepage
+// router.get('/homepage', authMiddleware, (req, res) => {
+//   res.send(`you are logged in: ${req}`)
+//   console.log(req.user)
+// })
 
 module.exports = router

@@ -1,3 +1,3 @@
-npm i -S bcrypt, body-parser, dotenv, ejs, express, express-session, joi mongoose, morgan, node-gyp, passport, passport-local, bootstrap-icons, passport-google-oauth20
+npm i -S bcrypt, body-parser, dotenv, ejs, express, express-session, joi mongoose, morgan, node-gyp, passport, passport-local, bootstrap-icons, passport-google-oauth20, cookie-session
 
 npm i -D chai, chai-http, eslint, mocha, nodemon

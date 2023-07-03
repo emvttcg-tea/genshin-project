@@ -22,6 +22,9 @@ const authRoutes = require('./routes/authRoutes')
 const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
 
+// cookies 
+const cookieSession = require('cookie-session')
+
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,7 +33,7 @@ app.set('view engine', 'ejs')
 
 // sessions
 app.use(exsession({
-  secret: 'keyboard cat',
+  secret: 'youngteaisawesome',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
