@@ -89,9 +89,10 @@ router.post('/login', guestMiddleware, (req, res, next) => {
       return res.redirect('/login')
     }
 
-    req.logIn(user, (err) => {
+    req.logIn(user, () => {
+      req.session.user = req.user
+      
       if (err) {
-        // console.error('Err:', err)
         req.session.flashData = {
           message: {
             type: 'error',
@@ -99,6 +100,7 @@ router.post('/login', guestMiddleware, (req, res, next) => {
           }
         }
       }
+      console.log(req.user)
       return res.redirect('/homepage')
     })
   })(req, res, next)
@@ -122,25 +124,19 @@ router.get('/logout', authMiddleware, (req, res) => {
   return res.redirect('/')
 })
 
-// // google login
-// router.get('/auth/google', passport.authenticate('google', {scope: ['profile']}))
+// google login
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile']}))
 
-// // google callback
-// router.get('/google/redirect', /**authMiddleware,guestMiddleware,**/ passport.authenticate('google'), (req, res, user) => {
-//   console.log('user is:', req.user)
-//   // req.login(user, (err) => {
-//   //   if (err) { return next(err); }
-//   //   console.log('wtf?')
-//   //   return res.send('welcome' + req.user.username);
-//   // });
-//   // res.send(req.user.username)
-//   res.redirect('/homepage')
-// })
-
-// profile/homepage
-// router.get('/homepage', authMiddleware, (req, res) => {
-//   res.send(`you are logged in: ${req}`)
-//   console.log(req.user)
-// })
+// google callback
+router.get('/google/redirect', /**authMiddleware,guestMiddleware,**/ passport.authenticate('google'), (req, res, user) => {
+  console.log('user is:', req.user)
+  req.login(user, (err) => {
+    if (err) { return next(err); }
+    console.log('wtf?')
+    return res.send('welcome' + req.user.username);
+  });
+  res.send(req.user.username)
+  res.redirect('/homepage')
+})
 
 module.exports = router

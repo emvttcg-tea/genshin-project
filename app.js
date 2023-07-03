@@ -14,7 +14,7 @@ const passport = require('passport')
 
 // strategies
 require('./utils/authStrategies/localStrategy')
-const passportSetup = require('./utils/passportCon')
+require('./utils/passportCon')
 
 
 // middlewares
@@ -39,10 +39,10 @@ app.use(exsession({
   cookie: { secure: false }
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(express.static('public'))
 app.use(logger('dev'))
-app.use(passport.session())
-app.use(passport.initialize())
 app.use('/', authRoutes)
 app.locals.message = {}
 app.locals.formData = {}
@@ -56,7 +56,9 @@ app.get('/', flasherMiddleware, (req, res) => {
 })
 
 // homepage
-app.get('/homepage', authMiddleware, (req, res) => {
+app.get('/homepage', /*authMiddleware,*/ (req, res) => {
+  req.user = req.session.user
+  console.log(req.user)
   res.send(`welcome ${req.user.username}`)
 })
 
