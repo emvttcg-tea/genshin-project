@@ -90,9 +90,11 @@ router.post('/login', guestMiddleware, (req, res, next) => {
     }
 
     req.logIn(user, (err) => {
-      //req.session.user = req.user
+      // req.user = req.session.user
+      req.session.user = user
       
       if (err) {
+        console.log(err)
         req.session.flashData = {
           message: {
             type: 'error',
@@ -105,7 +107,10 @@ router.post('/login', guestMiddleware, (req, res, next) => {
       } else {
         console.log('pizda')
       }
-      console.log(`authroutes: ${req.user}`)
+
+      // req.isAuthenticated() = true
+
+      // console.log(req.user)
       return res.redirect('/homepage')
     })
   })(req, res, next)

@@ -62,7 +62,7 @@ app.get('/homepage', (req, res) => {
     console.log('pizda2')
   }
   req.user = req.session.user
-  console.log(req.user)
+  console.log(req.user.username)
   res.send(`welcome ${req.user.username}`)
 })
 
