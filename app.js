@@ -5,17 +5,12 @@ require('./utils/db.config')
 
 //express
 const express = require('express')
-const exsession = require('express-session')
+const session = require('express-session')
 
 // all others
 const logger = require('morgan')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-
-// strategies
-require('./utils/authStrategies/localStrategy')
-require('./utils/passportCon')
-
 
 // middlewares
 const authRoutes = require('./routes/authRoutes')
@@ -23,7 +18,7 @@ const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
 
 // cookies 
-const cookieSession = require('cookie-session')
+const guestMiddleware = require('./middleware/guestMiddleware')
 
 const app = express()
 
@@ -32,17 +27,21 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')
 
 // sessions
-app.use(exsession({
+app.use(session({
   secret: 'youngteaisawesome',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
 }))
 
-app.use(passport.initialize())
-app.use(passport.session())
+// strategies
+require('./utils/authStrategies/localStrategy')
+require('./utils/passportCon')
+
 app.use(express.static('public'))
 app.use(logger('dev'))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use('/', authRoutes)
 app.locals.message = {}
 app.locals.formData = {}
@@ -56,7 +55,12 @@ app.get('/', flasherMiddleware, (req, res) => {
 })
 
 // homepage
-app.get('/homepage', /*authMiddleware,*/ (req, res) => {
+app.get('/homepage', (req, res) => {
+  if(req.isAuthenticated()){
+    console.log('da2')
+  } else {
+    console.log('pizda2')
+  }
   req.user = req.session.user
   console.log(req.user)
   res.send(`welcome ${req.user.username}`)

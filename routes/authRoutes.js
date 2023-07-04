@@ -24,7 +24,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
       abortEarly: false
     })
     if (validationResult.error) {
-      // console.log(validationResult.error)
+      console.log(validationResult.error)
       req.session.flashData = {
         message: {
           type: 'error',
@@ -44,7 +44,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
     }
     return res.redirect('/register')
   } catch (e) {
-    // console.log(e)
+    console.log(e)
     req.session.flashData = {
       message: {
         type: 'error',
@@ -89,8 +89,8 @@ router.post('/login', guestMiddleware, (req, res, next) => {
       return res.redirect('/login')
     }
 
-    req.logIn(user, () => {
-      req.session.user = req.user
+    req.logIn(user, (err) => {
+      //req.session.user = req.user
       
       if (err) {
         req.session.flashData = {
@@ -100,7 +100,12 @@ router.post('/login', guestMiddleware, (req, res, next) => {
           }
         }
       }
-      console.log(req.user)
+      if(req.isAuthenticated()){
+        console.log('da')
+      } else {
+        console.log('pizda')
+      }
+      console.log(`authroutes: ${req.user}`)
       return res.redirect('/homepage')
     })
   })(req, res, next)
