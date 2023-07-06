@@ -55,14 +55,16 @@ app.get('/', flasherMiddleware, (req, res) => {
 })
 
 // homepage
-app.get('/homepage', authMiddleware, (req, res) => {
+app.get('/homepage', /** authMiddleware,*/ (req, res) => {
   if(req.isAuthenticated()){
-    console.log('isAuthenticated')
+    console.log('isAuthenticated 2')
   } else {
-    console.log('not authenticated')
+    console.log('not authenticated 2')
   }
   req.user = req.session.user
-  console.log(req.user.username)
+
+  console.log(req.user)
+
   res.send(`welcome ${req.user.username}`)
 })
 

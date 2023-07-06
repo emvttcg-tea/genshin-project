@@ -4,11 +4,11 @@ const User = require('../modules/users/models/googleUser')
 const config = require('./config')
 
 passport.serializeUser((user, done) => {
-  done(null, user.id)
+  done(null, user._id)
 })
 
-passport.deserializeUser((id, done) => {
-  User.findById(id).then((user) => {
+passport.deserializeUser(async(user, done) => {
+  await User.findById(user._id).then((user) => {
     done(null, user)
   })
 })
