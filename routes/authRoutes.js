@@ -103,14 +103,11 @@ router.post('/login', guestMiddleware, (req, res, next) => {
         }
       }
       if(req.isAuthenticated()){
-        console.log('da')
+        console.log('isAuthenticated')
       } else {
-        console.log('pizda')
+        console.log('not authenticated')
       }
 
-      // req.isAuthenticated() = true
-
-      // console.log(req.user)
       return res.redirect('/homepage')
     })
   })(req, res, next)

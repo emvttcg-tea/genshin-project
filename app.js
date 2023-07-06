@@ -55,11 +55,11 @@ app.get('/', flasherMiddleware, (req, res) => {
 })
 
 // homepage
-app.get('/homepage', (req, res) => {
+app.get('/homepage', authMiddleware, (req, res) => {
   if(req.isAuthenticated()){
-    console.log('da2')
+    console.log('isAuthenticated')
   } else {
-    console.log('pizda2')
+    console.log('not authenticated')
   }
   req.user = req.session.user
   console.log(req.user.username)
