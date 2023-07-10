@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha tests/*.js --exit",
-    "serve:local": "nodemon app.js -e js,ejs,css",
+    "serve:local": "nodemon app.js -e js",
     "lint:fix": "eslint --fix ./*.js"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/emvttcg-tea/genshin-project#readme",
   "dependencies": {
+    "admin-lte": "3.2",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "bootstrap-icons": "^1.10.5",

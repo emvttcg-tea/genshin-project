@@ -3,7 +3,7 @@ const authMiddleware = (req, res, next) => {
     return next()
   }
 
-  res.redirect('/login')
+  res.redirect('/auth/login')
 
 }
 

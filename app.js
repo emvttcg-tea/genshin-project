@@ -12,12 +12,11 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 
-// middlewares
 const authRoutes = require('./routes/authRoutes')
+
+// middlewares
 const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
-
-// cookies 
 const guestMiddleware = require('./middleware/guestMiddleware')
 
 const app = express()
@@ -36,12 +35,18 @@ app.use(session({
 
 // strategies
 require('./utils/authStrategies/localStrategy')
-require('./utils/passportCon')
 
 app.use(express.static('public'))
 app.use(logger('dev'))
 app.use(passport.initialize())
 app.use(passport.session())
+
+// access users to the views
+app.use((req, res, next) => {
+  res.locals.user = req.isAuthenticated() ? req.user : null
+  next()
+})
+
 app.use('/', authRoutes)
 app.locals.message = {}
 app.locals.formData = {}
@@ -55,17 +60,17 @@ app.get('/', flasherMiddleware, (req, res) => {
 })
 
 // homepage
-app.get('/homepage', /** authMiddleware,*/ (req, res) => {
-  if(req.isAuthenticated()){
-    console.log('isAuthenticated 2')
-  } else {
-    console.log('not authenticated 2')
-  }
+app.get('/homepage', authMiddleware, (req, res) => {
+  // if(req.isAuthenticated()){
+  //   console.log('isAuthenticated 2')
+  // } else {
+  //   console.log('not authenticated 2')
+  // }
   req.user = req.session.user
 
-  console.log(req.user)
+  // console.log(req.user)
 
-  res.send(`welcome ${req.user.username}`)
+  res.render('dashboard')
 })
 
 // 404

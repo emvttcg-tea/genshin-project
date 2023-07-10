@@ -11,14 +11,14 @@ const flasherMiddleware = require('../middleware/flasherMiddleware')
 /**
  * Shows page for user registration
  */
-router.get('/register', guestMiddleware, flasherMiddleware, (req, res) => {
-  return res.render('register')
+router.get('/auth/register', guestMiddleware, flasherMiddleware, (req, res) => {
+  return res.render('auth/register')
 })
 
 /**
  * Handles user registration
  */
-router.post('/register', guestMiddleware, async (req, res) => {
+router.post('/auth/register', guestMiddleware, async (req, res) => {
   try {
     const validationResult = registerSchema.validate(req.body, {
       abortEarly: false
@@ -33,7 +33,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
         errors: joiErrorFormatter(validationResult.error),
         formData: req.body
       }
-      return res.redirect('/register')
+      return res.redirect('/auth/register')
     }
     await addUser(req.body)
     req.session.flashData = {
@@ -42,7 +42,7 @@ router.post('/register', guestMiddleware, async (req, res) => {
         body: 'Registration success'
       }
     }
-    return res.redirect('/register')
+    return res.redirect('/auth/register')
   } catch (e) {
     console.log(e)
     req.session.flashData = {
@@ -53,21 +53,21 @@ router.post('/register', guestMiddleware, async (req, res) => {
       errors: mongooseErrorFormatter(e),
       formData: req.body
     }
-    return res.redirect('/register')
+    return res.redirect('/auth/register')
   }
 })
 
 /**
  * Shows page for user login
  */
-router.get('/login', guestMiddleware, flasherMiddleware, (req, res) => {
-  return res.render('login')
+router.get('/auth/login', guestMiddleware, flasherMiddleware, (req, res) => {
+  return res.render('auth/login')
 })
 
 /**
  * Logs in a user
  */
-router.post('/login', guestMiddleware, (req, res, next) => {
+router.post('/auth/login', guestMiddleware, (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
       req.session.flashData = {
@@ -76,7 +76,7 @@ router.post('/login', guestMiddleware, (req, res, next) => {
           body: 'Login failed'
         }
       }
-      return res.redirect('/login')
+      return res.redirect('auth/login')
     }
 
     if (!user) {
@@ -86,7 +86,7 @@ router.post('/login', guestMiddleware, (req, res, next) => {
           body: info.error
         }
       }
-      return res.redirect('/login')
+      return res.redirect('auth/login')
     }
 
     req.logIn(user, (err) => {
@@ -110,7 +110,7 @@ router.post('/login', guestMiddleware, (req, res, next) => {
 /**
  * Logs out a user
  */
-router.get('/logout', authMiddleware, (req, res) => {
+router.get('/auth/logout', authMiddleware, (req, res) => {
   req.logout((err) => {
     if (err) {
       return next(err)
@@ -123,36 +123,6 @@ router.get('/logout', authMiddleware, (req, res) => {
     }
   }
   return res.redirect('/')
-})
-
-// google login
-router.get('/auth/google', passport.authenticate('google', {scope: ['profile']}))
-
-// google callback
-router.get('/google/redirect', guestMiddleware, (req, res, next) => {
-  passport.authenticate('google', (err, user, info) => {
-
-    if (err) {
-      console.log(err)
-    }
-
-    req.logIn(user, (err) => {
-      req.session.user = user
-      // console.log(req)
-
-      if (err) {
-        console.log(err)
-      }
-
-      if(req.isAuthenticated()){
-        console.log('isAuthenticated')
-      } else {
-        console.log('not authenticated')
-      }
-
-      return res.redirect('/homepage')
-    })
-  })(req, res, next)
 })
 
 module.exports = router
