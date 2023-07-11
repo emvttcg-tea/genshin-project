@@ -12,7 +12,9 @@ const flasherMiddleware = require('../middleware/flasherMiddleware')
  * Shows page for user registration
  */
 router.get('/auth/register', guestMiddleware, flasherMiddleware, (req, res) => {
-  return res.render('auth/register')
+  return res.render('auth/register', {
+    title: 'Register - GenshinMaster'
+  })
 })
 
 /**
@@ -61,7 +63,9 @@ router.post('/auth/register', guestMiddleware, async (req, res) => {
  * Shows page for user login
  */
 router.get('/auth/login', guestMiddleware, flasherMiddleware, (req, res) => {
-  return res.render('auth/login')
+  return res.render('auth/login', {
+    title: 'Login - GenshinMaster'
+  })
 })
 
 /**
@@ -102,7 +106,7 @@ router.post('/auth/login', guestMiddleware, (req, res, next) => {
           }
         }
       }
-      return res.redirect('/homepage')
+      return res.redirect('/')
     })
   })(req, res, next)
 })

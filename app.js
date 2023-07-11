@@ -12,7 +12,9 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 
+// routes
 const authRoutes = require('./routes/authRoutes')
+const adminRoutes = require('./routes/adminRoutes')
 
 // middlewares
 const authMiddleware = require('./middleware/authMiddleware')
@@ -47,10 +49,14 @@ app.use((req, res, next) => {
   next()
 })
 
+// routes
 app.use('/', authRoutes)
+app.use('/admin', adminRoutes)
+
 app.locals.message = {}
 app.locals.formData = {}
 app.locals.errors = {}
+app.locals.title = 'GenshinMaster'
 
 // home page render
 app.get('/', flasherMiddleware, (req, res) => {
@@ -70,7 +76,7 @@ app.get('/homepage', authMiddleware, (req, res) => {
 
   // console.log(req.user)
 
-  res.render('dashboard')
+  res.send('somepage')
 })
 
 // 404
