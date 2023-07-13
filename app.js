@@ -79,6 +79,11 @@ app.get('/homepage', authMiddleware, (req, res) => {
   res.send('somepage')
 })
 
+// no access
+app.get('/no-access', (req, res) => {
+  res.render('no-access')
+})
+
 // 404
 app.use((req, res) => {
   return res.status(404).render('404')

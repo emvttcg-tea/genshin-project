@@ -18,8 +18,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, 'Password is required']
   },
-  userID: {
-    // get new id and check if it is the same that exists already, or somehow add +1 each new user and start from user 000001
+  admin: {
+    type: Boolean,
+    default: false
   },
   isActive: {
     type: Boolean,

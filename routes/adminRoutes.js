@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const guestMiddleware = require('../middleware/guestMiddleware')
-const authMiddleware = require('../middleware/authMiddleware')
+
+// middleware
 const flasherMiddleware = require('../middleware/flasherMiddleware')
+const authMiddleware = require('../middleware/authMiddleware')
+const adminMiddleware = require('../middleware/adminMiddleware')
 
 // rendering the admin page
-router.get('/dashboard', authMiddleware, (req, res) => {
+router.get('/dashboard', adminMiddleware, (req, res) => {
   req.user = req.session.user
   res.render('admin/dashboard')
 })
@@ -13,7 +15,6 @@ router.get('/dashboard', authMiddleware, (req, res) => {
 //create item page
 router.get('/create-item', authMiddleware, (req, res) => {
   req.user = req.session.user
-  console.log(req.originalUrl)
   res.render('admin/create-item')
 })
 
