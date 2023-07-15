@@ -126,6 +126,6 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 
-.node-modules
+.node_modules
 .yarn/install-state.gz
 .pnp.*
