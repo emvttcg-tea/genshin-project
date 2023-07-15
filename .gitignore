@@ -39,6 +39,7 @@ bower_components
 build/Release
 
 # Dependency directories
+node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -125,7 +126,5 @@ dist
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
-
-.node_modules
 .yarn/install-state.gz
 .pnp.*
