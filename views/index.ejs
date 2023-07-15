@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+
+ <%- include('includes/head'); %>
+
+  <body>
+
+    <%- include('includes/nav'); %>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-2"></div>
+
+        <div class="col-8">
+
+          <% if (!user) { %>
+            <a class="btn btn-primary" href="/auth/register" role="button">Register</a>
+            <a class="btn btn-primary" href="/auth/login" role="button">Login</a>
+          <% } %>
+      
+          <% if (user) { %>
+            <a class="btn btn-primary" href="/auth/logout" role="button">logout</a>
+            <a class="btn btn-primary" href="/homepage" role="button">(homepage)</a>
+            <a class="btn btn-primary" href="/admin/dashboard" role="button">admin</a>
+          <% } %>
+      
+          <a class="btn btn-primary" href="/404" role="button">404</a>
+      
+          <h1>
+      
+            <% if (user) { %>
+              Hello, <%= user.username %>
+            <%} else { %>
+              Hello, guest!
+            <% } %>
+      
+          </h1>
+      
+          <% if (message.type) { %>
+            <div class="alert alert-<%= message.type === 'success' ? 'success' : 'danger' %>" role="alert">
+              <%= message.body %>
+            </div>
+          <% } %>
+
+        </div> <!-- col-8 -->
+
+        <div class="col-2"></div>
+
+      </div> <!-- row -->
+
+    </div> <!-- container -->
+
+ 
+    <%- include('includes/scripts'); %>
+    
+  </body>
+
+</html>

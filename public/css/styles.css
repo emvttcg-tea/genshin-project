@@ -1,0 +1,25 @@
+/* root */
+body {
+  background-color: #F0EBE5;
+}
+
+/* remove */
+.btn-group {
+  margin-top: 5%;
+}
+
+/* class id */
+.navbar-custom {
+  background-color: #495263;
+  height: 4em;
+}
+
+.nav-logo {
+  width: 2em;
+}
+
+/* dark theme */
+.dark-main {
+  background-color: #3A414F;
+  color: #fff;
+}
