@@ -28,17 +28,25 @@
           <% } %>
       
           <a class="btn btn-primary" href="/404" role="button">404</a>
+
+          <!-- language -->
+          <form action="/<%= smws.lang %>/language" method="post">
+
+            <button class="en-button" type="submit" name="lang" value="en">EN</button>
+            <button class="ru-button" type="submit" name="lang" value="ru">RU</button>
+
+          </form>
       
+          <!-- username -->
           <h1>
-      
             <% if (user) { %>
               Hello, <%= user.username %>
             <%} else { %>
               Hello, guest!
             <% } %>
-      
           </h1>
       
+          <!-- alerts -->
           <% if (message.type) { %>
             <div class="alert alert-<%= message.type === 'success' ? 'success' : 'danger' %>" role="alert">
               <%= message.body %>

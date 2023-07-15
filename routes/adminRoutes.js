@@ -13,7 +13,7 @@ router.get('/dashboard', adminMiddleware, (req, res) => {
 })
 
 //create item page
-router.get('/create-item', authMiddleware, (req, res) => {
+router.get('/create-item', adminMiddleware, (req, res) => {
   req.user = req.session.user
   const messageClass = 'active'
   res.render('admin/create-item', {title: 'Admin - create item', message: messageClass})

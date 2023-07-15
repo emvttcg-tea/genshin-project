@@ -21,6 +21,15 @@ const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
 const guestMiddleware = require('./middleware/guestMiddleware')
 
+// will make other file for this
+const smws = require("smws")
+
+// smws config(language changes)
+smws.config({
+  languages: ['en','ru'],
+  defaultLang: 'en'
+});
+
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -60,8 +69,6 @@ app.locals.title = 'GenshinMaster'
 
 // home page render
 app.get('/', flasherMiddleware, (req, res) => {
-  console.log(req.user)
-
   return res.render('index')
 })
 
@@ -77,6 +84,11 @@ app.get('/homepage', authMiddleware, (req, res) => {
   // console.log(req.user)
 
   res.send('somepage')
+})
+
+// language
+app.post('/:lang/language', (req,res)=>{
+  smws.switcher(req,res);
 })
 
 // no access
