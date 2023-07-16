@@ -22,13 +22,15 @@ const flasherMiddleware = require('./middleware/flasherMiddleware')
 const guestMiddleware = require('./middleware/guestMiddleware')
 
 // will make other file for this
-const smws = require("smws")
+const i18n = require("i18n")
 
 // smws config(language changes)
-smws.config({
-  languages: ['en','ru'],
-  defaultLang: 'en'
-});
+// minimal config
+i18n.configure({
+  locales: ['en', 'ru'],
+  directory: 'locales',
+  updateFiles: false
+})
 
 const app = express()
 

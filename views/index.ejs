@@ -30,7 +30,7 @@
           <a class="btn btn-primary" href="/404" role="button">404</a>
 
           <!-- language -->
-          <form action="/<%= smws.lang %>/language" method="post">
+          <form action="" method="post">
 
             <button class="en-button" type="submit" name="lang" value="en">EN</button>
             <button class="ru-button" type="submit" name="lang" value="ru">RU</button>
@@ -40,7 +40,7 @@
           <!-- username -->
           <h1>
             <% if (user) { %>
-              Hello, <%= user.username %>
+              Hello, my name is <%= user.username %>
             <%} else { %>
               Hello, guest!
             <% } %>
