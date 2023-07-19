@@ -1,11 +1,28 @@
 .sidenav{
-  background-color: #495263;
-  color: white;
   height: 100%;
   min-height: 100vh;
 }
 
 .side-link {
-  color: white;
-  text-decoration: none;
+  margin-left: 10%;
+  color: #fff;
+}
+
+.side-link a {
+  font-size: 1.25em;
+  transition: all 500ms;
+  color: #fff;
+}
+
+.side-link a:hover {
+  color: #E5CE96;
+  font-size: 1.28em;
+}
+
+.cntnr-f {
+  padding-left: 0;
+}
+
+.logout {
+  margin-left: 25%;
 }
