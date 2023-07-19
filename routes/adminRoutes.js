@@ -7,7 +7,7 @@ const authMiddleware = require('../middleware/authMiddleware')
 const adminMiddleware = require('../middleware/adminMiddleware')
 
 // rendering the admin page
-router.get('/dashboard', adminMiddleware, authMiddleware, (req, res) => {
+router.get('/dashboard', authMiddleware, adminMiddleware, (req, res) => {
   req.user = req.session.user
   res.render('admin/dashboard')
 })
