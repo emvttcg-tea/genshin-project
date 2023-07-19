@@ -3,6 +3,10 @@ body {
   background-color: #F0EBE5;
 }
 
+html {
+  cursor: url('/img/cursor.png'), auto;	
+}
+
 /* remove */
 .btn-group {
   margin-top: 5%;
