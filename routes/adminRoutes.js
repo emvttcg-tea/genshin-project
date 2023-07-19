@@ -7,13 +7,13 @@ const authMiddleware = require('../middleware/authMiddleware')
 const adminMiddleware = require('../middleware/adminMiddleware')
 
 // rendering the admin page
-router.get('/dashboard', adminMiddleware, (req, res) => {
+router.get('/dashboard', adminMiddleware, authMiddleware, (req, res) => {
   req.user = req.session.user
   res.render('admin/dashboard')
 })
 
 //create item page
-router.get('/create-item', adminMiddleware, (req, res) => {
+router.get('/create-item', adminMiddleware, authMiddleware, (req, res) => {
   req.user = req.session.user
   const messageClass = 'active'
   res.render('admin/create-item', {title: 'Admin - create item', message: messageClass})
