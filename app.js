@@ -15,22 +15,12 @@ const passport = require('passport')
 // routes
 const authRoutes = require('./routes/authRoutes')
 const adminRoutes = require('./routes/adminRoutes')
+const productRoute = require('./routes/productRoute')
 
 // middlewares
 const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
 const guestMiddleware = require('./middleware/guestMiddleware')
-
-// will make other file for this
-const i18n = require("i18n")
-
-// smws config(language changes)
-// minimal config
-i18n.configure({
-  locales: ['en', 'ru'],
-  directory: 'locales',
-  updateFiles: false
-})
 
 const app = express()
 
@@ -63,6 +53,7 @@ app.use((req, res, next) => {
 // routes
 app.use('/', authRoutes)
 app.use('/admin', adminRoutes)
+app.use('/', productRoute)
 
 app.locals.message = {}
 app.locals.formData = {}
@@ -72,25 +63,6 @@ app.locals.title = 'GenshinMaster'
 // home page render
 app.get('/', flasherMiddleware, (req, res) => {
   return res.render('index')
-})
-
-// homepage
-app.get('/homepage', authMiddleware, (req, res) => {
-  // if(req.isAuthenticated()){
-  //   console.log('isAuthenticated 2')
-  // } else {
-  //   console.log('not authenticated 2')
-  // }
-  req.user = req.session.user
-
-  // console.log(req.user)
-
-  res.send('somepage')
-})
-
-// language
-app.post('/:lang/language', (req,res)=>{
-  smws.switcher(req,res);
 })
 
 // no access
