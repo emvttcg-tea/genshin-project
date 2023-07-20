@@ -1,3 +1,4 @@
+/* sidenav */
 .sidenav{
   height: 100%;
   min-height: 100vh;
@@ -25,4 +26,8 @@
 
 .logout {
   margin-left: 25%;
+}
+
+.create-item-active {
+  color: #57809F;
 }
