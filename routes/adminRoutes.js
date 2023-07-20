@@ -9,7 +9,8 @@ const adminMiddleware = require('../middleware/adminMiddleware')
 // rendering the admin page
 router.get('/dashboard', authMiddleware, adminMiddleware, (req, res) => {
   req.user = req.session.user
-  res.render('admin/dashboard')
+  const messageClass = 'side-link'
+  res.render('admin/dashboard', {title: 'Admin', message: messageClass})
 })
 
 //create item page

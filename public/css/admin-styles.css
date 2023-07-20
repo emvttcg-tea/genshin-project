@@ -5,19 +5,22 @@
 }
 
 .side-link {
-  margin-left: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.side-link a{
   color: #fff;
 }
 
-.side-link a {
-  font-size: 1.25em;
-  transition: all 500ms;
-  color: #fff;
+.side-link:hover {
+  background: #fff;
 }
 
 .side-link a:hover {
-  color: #E5CE96;
-  font-size: 1.28em;
+  color: #343a40;
 }
 
 .cntnr-f {
@@ -29,5 +32,22 @@
 }
 
 .create-item-active {
-  color: #57809F;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: #E5CE96;
+
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.create-item-active a{
+  color: #E5CE96;
+}
+
+.create-item-active:hover {
+  border-color: #fff;
+}
+
+.create-item-active a:hover {
+  color: #fff;
 }
