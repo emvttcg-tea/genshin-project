@@ -14,10 +14,13 @@ router.get('/dashboard', authMiddleware, adminMiddleware, (req, res) => {
 })
 
 //create item page
-router.get('/create-item', adminMiddleware, authMiddleware, (req, res) => {
+router.get('/create-item', authMiddleware, adminMiddleware, (req, res) => {
   req.user = req.session.user
   const messageClass = 'create-item-active'
   res.render('admin/create-item', {title: 'Admin - create item', message: messageClass})
 })
+
+// creating item
+router.post()
 
 module.exports = router
