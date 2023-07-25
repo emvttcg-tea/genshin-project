@@ -1,14 +1,22 @@
-const products = [
-    {title: 'product1', price: '10', currency: '$' },
-    {title: 'product2', price: '110', currency: '€‎' },
-    {title: 'product3', price: '30', currency: '$' }
-]
+const mongoose = require('mongoose')
+const db = mongoose.connection
+const productm = require('../modules/products/models/product')
+
+//var products = []
+
+productm.find({}).then((result) => {
+  const products = result
+})
+
+console.log(products)
+
+
 
 const addProduct =  (product) => {
-    products.push(product)
+  products.push(product)
 }
 
 module.exports = {
-    products,
-    addProduct
+  products,
+  addProduct
 }

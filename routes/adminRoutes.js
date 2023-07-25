@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
+// db
+const mongoose = require('mongoose')
+const db = mongoose.connection
+
 const { addProduct } = require('../modules/products/service/productService')
 
 // middleware
@@ -25,11 +29,15 @@ router.get('/create-item', authMiddleware, adminMiddleware, (req, res) => {
 // creating item
 router.post('/create-item', authMiddleware, adminMiddleware, async (req, res) => {
   try {
-    console.log(req.body)
+    //console.log(req.body)
 
     product = await addProduct(req.body)
 
-    console.log(`Product is:    ${product}`)
+    // console.log(`Product is:    ${product}`)
+
+    // const products = db.collection("products").find({}, { isDeleted: 0 })
+
+    // console.log(products)
 
     res.send('Hallo!')
 
@@ -37,30 +45,5 @@ router.post('/create-item', authMiddleware, adminMiddleware, async (req, res) =>
 
   }
 })
-
-// router.post('/auth/register', guestMiddleware, async (req, res) => {
-//   try {
-    
-//     await addUser(req.body)
-//     req.session.flashData = {
-//       message: {
-//         type: 'success',
-//         body: 'Registration success'
-//       }
-//     }
-    
-//   } catch (e) {
-//     console.log(e)
-//     req.session.flashData = {
-//       message: {
-//         type: 'error',
-//         body: 'Validation Errors'
-//       },
-//       errors: mongooseErrorFormatter(e),
-//       formData: req.body
-//     }
-//     return res.redirect('/auth/register')
-//   }
-// })
 
 module.exports = router

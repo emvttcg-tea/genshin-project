@@ -8,7 +8,7 @@ const Product = require('../models/product')
 const addProduct = async (productInput) => {
   const product = new Product(productInput)
   await product.save()
-  console.log(productInput)
+  // console.log(productInput)
   return product
 }
 
