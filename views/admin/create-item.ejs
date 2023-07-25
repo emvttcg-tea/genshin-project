@@ -29,27 +29,21 @@
 
             <div class="col-lg-8 mt-5 form-back">
 
-              <form method="post" action="admin/create-item">
+              <form method="post" action="create-item">
 
                 <div class="mb-3">
-                  <label for="itemName" class="form-label">Item name</label>
-                  <input type="text" class="form-control" id="itemName">
-                </div>
-
-                <label class="form-label">Images</label>
-                <div class="custom-file mb-3">
-                  <input type="file" class="custom-file-input" id="itemImages">
-                  <label class="custom-file-label" for="itemImages">Choose file</label>
+                  <label for="itemName" class="form-label mb-3">Item name</label>
+                  <input type="text" name="itemname" class="form-control mrb-5 form-input" id="itemName">
                 </div>
 
                 <div class="mb-3">
-                  <label for="itemDescription" class="form-label">Item description</label>
-                  <textarea class="form-control" id="itemDescription"></textarea>
+                  <label for="itemDescription" class="form-label mb-3">Item description</label>
+                  <textarea class="form-control form-input mrb-5" name="description" id="itemDescription"></textarea>
                 </div>
 
                 <div class="mb-3">
-                  <label for="itemPrice" class="form-label">Item price</label>
-                  <input type="text" class="form-control" id="itemPrice">
+                  <label for="itemPrice" class="form-label mb-3">Item price</label>
+                  <input type="text" class="form-control mrb-5 form-input" name="price" id="itemPrice">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Create</button>
