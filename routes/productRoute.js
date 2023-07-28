@@ -1,13 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
-const productsData = require('../utils/products')
+// model
+const productm = require('../modules/products/models/product')
 
 // middleware
 
-// products page
-router.get('/products', (req, res) => {
-  res.render('products', {title: 'Products - GenshinMaster', products: productsData.products})
+productm.find({}).then((result) => {
+
+  console.log(result)
+  
+  // products page
+  router.get('/products', (req, res) => {
+    res.render('products', {title: 'Products - GenshinMaster', products: result})
+  })
+
 })
 
 module.exports = router
