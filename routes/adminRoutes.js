@@ -5,6 +5,9 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const db = mongoose.connection
 
+// model
+const productm = require('../modules/products/models/product')
+
 const { addProduct } = require('../modules/products/service/productService')
 
 // middleware
@@ -29,21 +32,32 @@ router.get('/create-item', authMiddleware, adminMiddleware, (req, res) => {
 // creating item
 router.post('/create-item', authMiddleware, adminMiddleware, async (req, res) => {
   try {
-    //console.log(req.body)
-
     product = await addProduct(req.body)
-
-    // console.log(`Product is:    ${product}`)
-
-    // const products = db.collection("products").find({}, { isDeleted: 0 })
-
-    // console.log(products)
 
     res.send('Hallo!')
 
   } catch (e) {
-
+    console.log(e)
   }
+})
+
+// item list page
+router.get('/item-list', authMiddleware, adminMiddleware, (req, res) => {
+
+
+  req.user = req.session.user
+  const messageClass = 'create-item-active'
+
+  productm.find({}).then((result) => {
+    console.log(result)
+    
+    res.render('admin/item-list', {title: 'Admin - products', message: messageClass, products: result})
+  
+  })
+
+  
+
+
 })
 
 module.exports = router

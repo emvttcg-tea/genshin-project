@@ -90,3 +90,12 @@ body {
   background-color: #7A87A0;
   border: 1px solid #333A46;
 }
+
+.card-custom {
+  background-color: #7A87A0;
+  margin-bottom: 0.5%;
+}
+
+.card-custom:hover {
+  transform: scale(1.01);
+}

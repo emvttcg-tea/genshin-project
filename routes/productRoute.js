@@ -6,13 +6,14 @@ const productm = require('../modules/products/models/product')
 
 // middleware
 
-productm.find({}).then((result) => {
+// products page
+router.get('/products', (req, res) => {
 
-  console.log(result)
-  
-  // products page
-  router.get('/products', (req, res) => {
+  productm.find({}).then((result) => {
+    //console.log(result)
+    
     res.render('products', {title: 'Products - GenshinMaster', products: result})
+  
   })
 
 })
