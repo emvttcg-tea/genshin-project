@@ -23,6 +23,12 @@ const productSchema = mongoose.Schema({
   timestamps: true
 })
 
+// validates unique name
+productSchema.path('itemname').validate(async (itemname) => {
+  const itemnameCount = await mongoose.models.products.countDocuments({ itemname })
+  return !itemnameCount
+}, 'Product with the same name already exists')
+
 const Product = mongoose.model('products', productSchema)
 
 module.exports = Product
