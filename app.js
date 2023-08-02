@@ -14,6 +14,7 @@ const passport = require('passport')
 
 // routes
 const authRoutes = require('./routes/authRoutes')
+const profileRoutes = require('./routes/profileRoutes')
 const adminRoutes = require('./routes/adminRoutes')
 const productRoute = require('./routes/productRoute')
 
@@ -52,6 +53,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/', authRoutes)
+app.use('/profile', profileRoutes)
 app.use('/admin', adminRoutes)
 app.use('/', productRoute)
 

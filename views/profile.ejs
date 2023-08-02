@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+
+ <%- include('includes/head'); %>
+
+  <body>
+
+    <%- include('includes/nav'); %>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-2"></div>
+
+        <div class="col-8">
+
+          <h1>Username: <%= user.username %></h1>
+          <h2>Email: <%= user.email %></h2>
+          <h3>ID: <%= user._id %></h3>
+
+          <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="">
+
+        </div> <!-- col-8 -->
+
+        <div class="col-2"></div>
+
+      </div> <!-- row -->
+
+    </div> <!-- container -->
+
+ 
+    <%- include('includes/scripts'); %>
+    
+  </body>
+
+</html>
