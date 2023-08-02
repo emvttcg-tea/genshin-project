@@ -46,9 +46,15 @@
                   <input type="text" class="form-control mrb-5 form-input" name="price" id="itemPrice">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary mb-3">Create</button>
 
-              </form>
+              </form class="">
+
+              <% if (message.type) { %>
+                <div class="text-center text-<%= message.type === 'success' ? 'success' : 'danger' %>">
+                  <h3><%= message.body %></h3>
+                </div>
+              <% } %>
 
             </div> <!-- col-lg-8 -->
 
