@@ -18,17 +18,7 @@
           <h5 class="card-title"> <%= product.description %> </h5>
           <p class="card-text"> Price: <%= product.price %> </p>
 
-          <form method="post" action="/add-to-cart">
-            <input type="hidden" name="product_id" value="<%= product._id %>" />
-
-            <input type="hidden" name="product_name" value="<%= product.itemname %>" />
-
-            <input type="hidden" name="product_price" value="<%= product.price %>" />
-
-            <input type="submit" class="btn btn-warning" value="Add to Cart" />
-          </form>
-
-          <!--<a href="/add-to-cart/<%= product._id %>">add to cart</a>-->
+          <a href="/add-to-cart/<%= product._id %>">add to cart</a>
         </div><!-- card-body -->
       </div><!-- card -->
 

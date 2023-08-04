@@ -30,4 +30,14 @@ router.get('/products/:id', (req, res) => {
 
 })
 
+// add to cart
+
+router.post('/add-to-cart', (req, res) => {
+  const productID = req.body.id
+
+  console.log(req.body)
+
+  res.send(productID)
+})
+
 module.exports = router
