@@ -15,6 +15,10 @@ const productSchema = mongoose.Schema({
     type: Number,
     required: [true, 'Price is required']
   },
+  imageURL: {
+    type: String,
+    required: [true, 'ImageURL is required'],
+  },
   isDeleted: {
     type: Boolean,
     default: false

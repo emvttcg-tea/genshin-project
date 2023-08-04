@@ -10,6 +10,9 @@ const productSchema = Joi.object({
   description: Joi.string()
     .required(),
 
+  imageURL: Joi.string()
+    .required(),
+
   price: Joi.number()
     .required()
 })
