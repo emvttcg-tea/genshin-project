@@ -12,6 +12,9 @@ const registerSchema = Joi.object({
 
   repeat_password: Joi.ref('password'),
 
+  pfpLink: Joi.string()
+    .required(),
+
   email: Joi.string()
     .trim()
     .lowercase()

@@ -18,6 +18,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, 'Password is required']
   },
+  pfpLink: {
+    type: String,
+    required: [true, 'Profile picture is required']
+  },
   admin: {
     type: Boolean,
     default: false

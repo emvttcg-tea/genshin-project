@@ -1,6 +1,5 @@
 //importing modules
 import fetch from 'node-fetch'
-// const axios = require("axios")
 
 const apiLink = 'https://young-tea.github.io/genshin-master-pictures/api/pfp.json'
 
@@ -14,13 +13,9 @@ const fetchLink = async (apiLink) => {
   return(data)
 }
 
-const datad = await fetchLink(apiLink)
-console.log(datad)
-
-// const response = await axios(apiLink);
-// console.log(response.data);
+const data = await fetchLink(apiLink)
 
 //exporting data
-
+module.exports = data
 
 //this is file that fetches avatars links
