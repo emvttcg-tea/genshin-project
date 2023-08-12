@@ -23,6 +23,38 @@ const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
 const guestMiddleware = require('./middleware/guestMiddleware')
 
+
+
+
+
+// const https = require('https')
+
+// const link = 'https://young-tea.github.io/genshin-master-pictures/api/pfp.json'
+
+// var data = ''
+
+// https.get(link, (res) => {
+//   console.log('statusCode:', res.statusCode)
+//   console.log('headers:', res.headers)
+
+//   res.on('data', (chunk) => {
+//     data += chunk
+//   })
+//   res.on('end', () => {
+//     // const result = process.stdout.write(d)
+//     const result = JSON.parse(data)
+//     data = result
+//     console.log(result)
+//   })
+
+// }).on('error', (e) => {
+//   console.error(e)
+// })
+
+
+
+
+
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
