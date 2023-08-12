@@ -1,3 +1,5 @@
 npm i -S bcrypt, body-parser, dotenv, ejs, express, express-session, joi mongoose, mongodb, morgan, node-gyp, passport, passport-local
 
 npm i -D chai, chai-http, eslint, mocha, nodemon
+
+npm install node-fetch@2

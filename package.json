@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/emvttcg-tea/genshin-project#readme",
   "dependencies": {
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cloc": "^1.96.0-cloc",
@@ -30,7 +31,7 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.0",
     "morgan": "^1.10.0",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.6.12",
     "node-gyp": "^9.4.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
