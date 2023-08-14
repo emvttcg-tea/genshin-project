@@ -7,11 +7,13 @@ const passport = require('passport')
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
 const flasherMiddleware = require('../middleware/flasherMiddleware')
+const pfps = require('../utils/fetchPfp.mjs')
 
 /**
  * Shows page for user registration
  */
 router.get('/auth/register', guestMiddleware, flasherMiddleware, (req, res) => {
+  console.log(pfps)
   return res.render('auth/register', {
     title: 'Register - GenshinMaster'
   })
