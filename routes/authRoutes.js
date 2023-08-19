@@ -7,16 +7,26 @@ const passport = require('passport')
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
 const flasherMiddleware = require('../middleware/flasherMiddleware')
-const pfps = require('../utils/fetchPfp.mjs')
+
+const axios = require('axios');
+const apiLink = 'https://young-tea.github.io/genshin-master-pictures/api/pfp.json'
 
 /**
  * Shows page for user registration
  */
 router.get('/auth/register', guestMiddleware, flasherMiddleware, (req, res) => {
-  console.log(pfps)
-  return res.render('auth/register', {
-    title: 'Register - GenshinMaster'
-  })
+
+  axios.get(apiLink).then(resp => {
+
+    console.log(resp.data)
+
+    return res.render('auth/register', {
+      title: 'Register - GenshinMaster',
+      pfps: resp.data
+    })
+
+  });
+
 })
 
 /**

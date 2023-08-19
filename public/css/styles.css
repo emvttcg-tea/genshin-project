@@ -12,7 +12,7 @@ html {
   margin-top: 5%;
 }
 
-/* class id */
+/* navbar */
 .navbar-custom {
   background-color: #495263;
   height: 4em;
@@ -22,8 +22,24 @@ html {
   width: 2em;
 }
 
-/* dark theme */
-.dark-main {
-  background-color: #3A414F;
-  color: #fff;
+/* radios */
+.radio-image {
+  width: 15%;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+  margin-right: 2em;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+   transform: scale(1.15);
 }
