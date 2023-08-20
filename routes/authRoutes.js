@@ -18,8 +18,6 @@ router.get('/auth/register', guestMiddleware, flasherMiddleware, (req, res) => {
 
   axios.get(apiLink).then(resp => {
 
-    console.log(resp.data)
-
     return res.render('auth/register', {
       title: 'Register - GenshinMaster',
       pfps: resp.data
@@ -67,6 +65,7 @@ router.post('/auth/register', guestMiddleware, async (req, res) => {
       errors: mongooseErrorFormatter(e),
       formData: req.body
     }
+    vonsole.log(req.body)
     return res.redirect('/auth/register')
   }
 })

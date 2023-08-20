@@ -23,15 +23,15 @@
                       <p class="card-text"> Price: <%= product.price %> </p>
 
                       <a href="/products/<%= product._id %>">details</a>
-                      <form method="post" action="/add-to-cart">
-                        <input type="hidden" name="id" value="<%= product._id %>" />
-            
-                        <input type="hidden" name="itemname" value="<%= product.itemname %>" />
-            
-                        <input type="hidden" name="price" value="<%= product.price %>" />
-            
-                        <input type="submit" class="btn btn-warning" value="Add to Cart" />
+                      
+                      <form action="POST" action="/cart">
+
+                        <input type="hidden" value="<%= product.id %>" name="productId">
+
+                        <button type="button" class="btn btn-warning">Add to cart</button>
+
                       </form>
+
                     </div>
                   </div>
             <% } %>
