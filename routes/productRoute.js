@@ -31,13 +31,41 @@ router.get('/products/:id', (req, res) => {
 })
 
 // add to cart
+router.post('/cart', (req, res) => {
+  // getting product id and assigning to variable
+  const productID = req.body.productId
 
-router.post('/add-to-cart', (req, res) => {
-  const productID = req.body.id
+  // checking if array with items exsists, if yes pushes productId to it, if no, creates it and then pushes
+  if(req.session.cartItems) {
+    req.session.cartItems.push(productID)
+  } else {
+    req.session.cartItems = []
+    req.session.cartItems.push(productID)
+  }
 
-  console.log(req.body)
+  res.redirect('/cart')
+})
 
-  res.send(productID)
+router.get('/cart', (req, res) => {
+
+  // getting array of items in cart
+  const cartItems = req.session.cartItems
+
+  // checking if there is items in cart, else sending no items
+  if(cartItems) {
+
+    //finding products from ids, then sending them
+    productm.find().where("_id").in(cartItems).then((result) => {
+      console.log(result)
+      console.log('items!!!')
+      res.render('products/cart', {title: 'Cart - GenshinMaster', cartItems: result})
+    })
+
+  } else {
+    console.log('No items')
+    res.render('products/cart', {title: 'Cart - GenshinMaster', cartItems: []})
+  }
+  
 })
 
 module.exports = router

@@ -24,11 +24,11 @@
 
                       <a href="/products/<%= product._id %>">details</a>
                       
-                      <form action="POST" action="/cart">
+                      <form method="post" action="/cart">
 
                         <input type="hidden" value="<%= product.id %>" name="productId">
 
-                        <button type="button" class="btn btn-warning">Add to cart</button>
+                        <button class="btn btn-warning">Add to cart</button>
 
                       </form>
 
