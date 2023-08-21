@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" data-theme="light">
 
  <%- include('includes/head'); %>
 
@@ -30,6 +30,12 @@
           <a class="btn btn-primary" href="/products" role="button">products</a>
           <a class="btn btn-primary" href="/cart" role="button">cart</a>
           <a class="btn btn-primary" href="/404" role="button">404</a>
+
+          <!-- dark mode switch -->
+          <div class="form-check form-switch toggle">
+            <input class="form-check-input" type="checkbox" role="switch" id="toggleDark">
+            <label class="form-check-label" for="toggleDark">Dark mode</label>
+          </div>
       
           <!-- username -->
           <h1>

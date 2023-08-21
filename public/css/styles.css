@@ -1,15 +1,10 @@
 /* root */
 body {
-  background-color: #F0EBE5;
+  background-color: var(--bg);
 }
 
 html {
   cursor: url('/img/cursor.png'), auto;	
-}
-
-/* remove */
-.btn-group {
-  margin-top: 5%;
 }
 
 /* navbar */
@@ -43,3 +38,15 @@ html {
 [type=radio]:checked + img {
    transform: scale(1.15);
 }
+
+/* dark mode */
+/* light theme colors */
+html {
+  --bg: #F0EBE5;
+}
+/* dark mode colors */
+html[data-theme='dark'] {
+  --bg: #3A414F;
+
+}
+/* dark mode switch */
