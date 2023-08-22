@@ -75,20 +75,30 @@
 
         <div class="">Choose your pfp</div>
 
-        <% for(var pfp of pfps) { %>
-          <label>
-            <input type="radio" value="<%= pfp.link %>" name="pfpLink" checked>
-            <img class="radio-image" src="<%= pfp.link %>" alt="<%= pfp.name %>">
-          </label>
-        <% } %>
+        <div class="row">
+
+          <div class="col-lg-2"></div>
+        
+          <div class="col-lg-8">
+        
+            <% for(var pfp of pfps) { %>
+              <label>
+                <input type="radio" value="<%= pfp.link %>" name="pfpLink" checked>
+                <img class="radio-image" src="<%= pfp.link %>" alt="<%= pfp.name %>">
+              </label>
+            <% } %>
+        
+          </div>
+        
+          <div class="col-lg-2"></div>
+
+        </div>
 
     <% } else {%>
 
         <div class="">Something went wrong...</div>
 
     <% }%>
-
-
 
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

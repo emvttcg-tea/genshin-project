@@ -3,13 +3,17 @@ body {
   background-color: var(--bg);
 }
 
+h1 {
+  color: var(--text);
+}
+
 html {
   cursor: url('/img/cursor.png'), auto;	
 }
 
 /* navbar */
 .navbar-custom {
-  background-color: #495263;
+  background-color: var(--nav-bg);
   height: 4em;
 }
 
@@ -43,10 +47,18 @@ html {
 /* light theme colors */
 html {
   --bg: #F0EBE5;
+  --text: #5C5C5C;
+  /* nav */
+  --nav-bg: #495263;
+  --nav-text: #fff;
 }
 /* dark mode colors */
 html[data-theme='dark'] {
   --bg: #3A414F;
+  --text: #E4E4E4;
+  /* nav */
+  --nav-bg:#495263 ;
+  --nav-text: #fff;
 
 }
 /* dark mode switch */
