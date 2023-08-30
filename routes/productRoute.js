@@ -51,19 +51,19 @@ router.get('/cart', (req, res) => {
   // getting array of items in cart
   const cartItems = req.session.cartItems
 
+  // getting length of array which is count of items in the cart
+  const itemsNumber = cartItems.length
+
   // checking if there is items in cart, else sending no items
   if(cartItems) {
 
     //finding products from ids, then sending them
     productm.find().where("_id").in(cartItems).then((result) => {
-      console.log(result)
-      console.log('items!!!')
-      res.render('products/cart', {title: 'Cart - GenshinMaster', cartItems: result})
+      res.render('products/cart', {title: 'Cart - GenshinMaster', cartItems: result, itemsNumber: itemsNumber})
     })
 
   } else {
-    console.log('No items')
-    res.render('products/cart', {title: 'Cart - GenshinMaster', cartItems: []})
+    res.render('products/cart', {title: 'Cart - GenshinMaster', cartItems: [],itemsNumber: 0})
   }
   
 })
