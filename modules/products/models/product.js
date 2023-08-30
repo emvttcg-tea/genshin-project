@@ -15,6 +15,10 @@ const productSchema = mongoose.Schema({
     type: Number,
     required: [true, 'Price is required']
   },
+  category: {
+    type: String,
+    required: [true, 'Category is required']
+  },
   imageURL: {
     type: String,
     required: [true, 'ImageURL is required'],
