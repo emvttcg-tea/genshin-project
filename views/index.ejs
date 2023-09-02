@@ -47,13 +47,13 @@
             </div>
           <% } %>
 
-          <form method="post" action="/categories/cat1">
+          
 
-            <input type="hidden" value="cat1" name="category">
+          <% for(var category of categories) { %>
 
-            <button class="btn btn-warning">Cat1</button>
+            <a href="/categories/<%= category.value %>" class="btn btn-warning mb-2"><%= category.category_name %></a>
 
-          </form>
+          <% } %>
 
         </div> <!-- col-8 -->
 

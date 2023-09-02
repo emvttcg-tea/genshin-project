@@ -20,11 +20,7 @@ router.get('/products', (req, res) => {
 
 // product page
 router.get('/products/:id', (req, res) => {
-  console.log(req.params.id)
-
   productm.findById(req.params.id).then((result) => {
-    console.log(result)
-
     res.render('products/product-page', {title: `${result.itemname} - GenshinMaster`, product: result})
   })
 

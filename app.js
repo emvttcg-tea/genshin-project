@@ -17,11 +17,15 @@ const authRoutes = require('./routes/authRoutes')
 const profileRoutes = require('./routes/profileRoutes')
 const adminRoutes = require('./routes/adminRoutes')
 const productRoute = require('./routes/productRoute')
+const categoryRoutes = require('./routes/categoryRoutes')
 
 // middlewares
 const authMiddleware = require('./middleware/authMiddleware')
 const flasherMiddleware = require('./middleware/flasherMiddleware')
 const guestMiddleware = require('./middleware/guestMiddleware')
+
+// category model
+const categorym = require('./modules/categories/models/category')
 
 const app = express()
 
@@ -56,6 +60,7 @@ app.use('/', authRoutes)
 app.use('/profile', profileRoutes)
 app.use('/admin', adminRoutes)
 app.use('/', productRoute)
+app.use('/', categoryRoutes)
 
 app.locals.message = {}
 app.locals.formData = {}
@@ -64,7 +69,9 @@ app.locals.title = 'GenshinMaster'
 
 // home page render
 app.get('/', flasherMiddleware, (req, res) => {
-  return res.render('index')
+  categorym.find({}).then((result) => {
+    return res.render('index', {categories: result})
+  })
 })
 
 // no access

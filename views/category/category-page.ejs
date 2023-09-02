@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+
+ <%- include('../includes/head'); %>
+
+  <body>
+
+    <%- include('../includes/nav'); %>
+
+    <div class="row">
+
+        <% if (products.length) {%>
+
+            <div class="">Products:</div>
+    
+            <% for(var product of products) { %>
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= product.imageURL %>" class="card-img-top" alt="product image">
+                    <div class="card-body">
+                      <h3 class="card-title"> <%= product.itemname %> </h3>
+                      <h5 class="card-title"> <%= product.description %> </h5>
+                      <p class="card-text"> Price: <%= product.price %> </p>
+                      <p class="card-text"> Category: <%= product.category %> </p>
+
+                      <a href="/products/<%= product._id %>">details</a>
+                      
+                      <form method="post" action="/cart">
+
+                        <input type="hidden" value="<%= product.id %>" name="productId">
+
+                        <button class="btn btn-warning">Add to cart</button>
+
+                      </form>
+
+                    </div>
+                  </div>
+            <% } %>
+    
+        <% } else {%>
+    
+            <div class="">No Products available</div>
+    
+        <% }%>
+
+    </div> <!-- row -->
+
+ 
+    <%- include('../includes/scripts'); %>
+    
+  </body>

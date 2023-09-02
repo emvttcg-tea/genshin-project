@@ -11,6 +11,8 @@ const { addProduct } = require('../modules/products/service/productService')
 const flasherMiddleware = require('../middleware/flasherMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
 const adminMiddleware = require('../middleware/adminMiddleware')
+// category model
+const categorym = require('../modules/categories/models/category')
 
 // rendering the admin page
 router.get('/dashboard', authMiddleware, adminMiddleware, (req, res) => {
@@ -22,7 +24,14 @@ router.get('/dashboard', authMiddleware, adminMiddleware, (req, res) => {
 //create item page
 router.get('/create-item', authMiddleware, adminMiddleware, flasherMiddleware, (req, res) => {
   req.user = req.session.user
-  res.render('admin/create-item', {title: 'Admin - create item'})
+
+  categorym.find({}).then((result) => {
+    console.log(result)
+    
+    res.render('admin/create-item', {title: 'Admin - create item', categories: result})
+  
+  })
+
 })
 
 // creating item
@@ -73,7 +82,6 @@ router.get('/item-list', authMiddleware, adminMiddleware, (req, res) => {
   const messageClass = 'create-item-active'
 
   productm.find({}).then((result) => {
-    console.log(result)
     
     res.render('admin/item-list', {title: 'Admin - products', message: messageClass, products: result})
   
