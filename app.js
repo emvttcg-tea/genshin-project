@@ -26,6 +26,8 @@ const guestMiddleware = require('./middleware/guestMiddleware')
 
 // category model
 const categorym = require('./modules/categories/models/category')
+// model
+const productm = require('./modules/products/models/product')
 
 const app = express()
 
@@ -69,8 +71,10 @@ app.locals.title = 'GenshinMaster'
 
 // home page render
 app.get('/', flasherMiddleware, (req, res) => {
-  categorym.find({}).then((result) => {
-    return res.render('index', {categories: result})
+  categorym.find({}).then((categories) => {
+    productm.find({}).then((products) => {
+      return res.render('index', {categories: categories, products: products})
+    })
   })
 })
 
