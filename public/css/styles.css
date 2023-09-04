@@ -14,12 +14,33 @@ html {
 /* navbar */
 .navbar-custom {
   background-color: var(--nav-bg);
-  height: 4em;
+  height: 5em;
 }
 
-.nav-logo {
-  width: 2em;
+.navbar-custom img{
+  width: 2.5em;
 }
+
+.navbar-custom a{
+  color: #fff;
+  font-family: 'Gabriela';
+  font-size: 20px;
+}
+
+/* icon hovering DO NOT TOUCH PLEASE */
+.nav-ico:hover .idle-icon,
+.nav-ico .hover-icon {
+  display: none;
+}
+
+.nav-ico:hover .hover-icon {
+  display: inline;
+}
+
+
+
+
+
 
 /* radios */
 .radio-image {
