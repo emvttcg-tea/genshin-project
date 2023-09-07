@@ -37,6 +37,25 @@ html {
   display: inline;
 }
 
+/* footer */
+footer {
+  background-color: var(--nav-bg);
+}
+
+.footer-link {
+  color: #fff !important;
+  font-size: 20px;
+}
+
+.footer-link:hover {
+  color: #DFC78D !important;
+}
+
+.footer-img{
+  width: 3.5em;
+}
+
+
 
 
 
@@ -69,6 +88,7 @@ html {
 html {
   --bg: #F0EBE5;
   --text: #5C5C5C;
+  --yellov: #DFC78D;
   /* nav */
   --nav-bg: #495263;
   --nav-text: #fff;
@@ -77,6 +97,7 @@ html {
 html[data-theme='dark'] {
   --bg: #3A414F;
   --text: #E4E4E4;
+  --yellov: #DFC78D;
   /* nav */
   --nav-bg:#495263 ;
   --nav-text: #fff;

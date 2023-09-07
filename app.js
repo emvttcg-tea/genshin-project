@@ -71,9 +71,14 @@ app.locals.title = 'GenshinMaster'
 
 // home page render
 app.get('/', flasherMiddleware, (req, res) => {
+  return res.render('index')
+})
+
+// home page render
+app.get('/test', flasherMiddleware, (req, res) => {
   categorym.find({}).then((categories) => {
     productm.find({}).then((products) => {
-      return res.render('index', {categories: categories, products: products})
+      return res.render('test', {categories: categories, products: products})
     })
   })
 })
