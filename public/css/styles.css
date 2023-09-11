@@ -3,28 +3,60 @@ body {
   background-color: var(--bg);
 }
 
-h1 {
-  color: var(--text);
+a {
+  cursor: url('/img/cursor/pointer.cur'), auto;
 }
 
 html {
-  cursor: url('/img/cursor.png'), auto;	
+  cursor: url('/img/cursor/idle.cur'), auto;
 }
 
-/* navbar */
+/* ======> NAVBAR <====== */
+/* bg */
 .navbar-custom {
   background-color: var(--nav-bg);
-  height: 5em;
+  height: 3em;
 }
 
-.navbar-custom img{
-  width: 2.5em;
+.nav-fluid {
+  background-color: var(--nav-bg);
+  height: 3em;
+  
 }
 
-.navbar-custom a{
+/* navbar brand */
+.nav-brand-cust img{
+  width: 1.5em;
+}
+
+.nav-brand-cust{
   color: #fff;
   font-family: 'Gabriela';
   font-size: 20px;
+}
+
+.nav-brand-cust:hover{
+  color: #fff;
+}
+
+.nav-brand-cust {
+  margin-top: 0em !important;
+  margin-bottom: 0.25em !important;
+  padding: 0em !important;
+}
+
+/* navbar icons */
+.nav-item-cust a{
+  margin-top: 0em !important;
+  margin-bottom: 0.25em !important;
+  margin-right: 2em !important;
+
+  padding: 0em !important;
+}
+
+.nav-item-cust img{
+  width: 2.5em;
+  margin-bottom: 0.5em !important;
 }
 
 /* icon hovering DO NOT TOUCH PLEASE */
@@ -37,7 +69,7 @@ html {
   display: inline;
 }
 
-/* footer */
+/* ======> FOOTER <====== */
 footer {
   background-color: var(--nav-bg);
 }
