@@ -87,7 +87,19 @@ footer {
   width: 3.5em;
 }
 
+/* ======> CARDS <====== */
+.card-custom {
+  background: #fff;
+  width: 17em;
+  margin-right: 3% !important;
+  margin-bottom: 5% !important;
+  padding: 0 !important;
+}
 
+.card-img-custom {
+  padding: 3%;
+  border-radius: 15px;
+}
 
 
 
